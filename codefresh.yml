@@ -1,0 +1,20 @@
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+
+steps:
+  main_clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "digitonic/vapor-step"
+    revision: "main"
+    stage: "clone"
+
+  build:
+    title: "Building Step"
+    type: "build"
+    image_name: digitonic/vapor-step
+    tag: "latest"
+    stage: "build"
+    registry: 'dockerhub'
