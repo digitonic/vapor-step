@@ -6,6 +6,6 @@ RUN composer require laravel/vapor-cli --update-with-dependencies
 
 RUN ln -s /vendor/bin/vapor /usr/local/bin/vapor
 
-RUN apt install npm -y
+RUN apt update && apt install npm -y
 
 ENTRYPOINT vapor
