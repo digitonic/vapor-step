@@ -18,3 +18,5 @@ steps:
     tag: "latest"
     stage: "build"
     registry: 'dockerhub'
+    build_arguments:
+      - GITHUB_TOKEN=${{GITHUB_TOKEN}}

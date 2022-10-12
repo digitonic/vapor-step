@@ -1,6 +1,12 @@
 FROM digitonic/php8.1:latest
 
+ARG GITHUB_TOKEN
+
 RUN echo '{"minimum-stability": "dev"}' > composer.json
+
+RUN echo $GITHUB_TOKEN
+
+RUN composer config --global github-oauth.github.com $GITHUB_TOKEN
 
 RUN composer require laravel/vapor-cli --update-with-dependencies
 
