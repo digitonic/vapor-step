@@ -6,6 +6,8 @@ RUN echo '{"minimum-stability": "dev"}' > composer.json
 
 RUN echo $GITHUB_TOKEN
 
+RUN mkdir ~/.ssh
+
 RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 RUN composer config --global github-oauth.github.com $GITHUB_TOKEN
