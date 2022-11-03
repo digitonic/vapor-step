@@ -16,6 +16,8 @@ RUN composer require laravel/vapor-cli --update-with-dependencies
 
 RUN ln -s /vendor/bin/vapor /usr/local/bin/vapor
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install nodejs -y
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash && nvm install node && nvm install node 12 && nvm install node 14 && nvm install node 16
+
+RUN ln -s /vendor/bin/vapor /usr/local/bin/vapor
 
 ENTRYPOINT []
