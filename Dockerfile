@@ -16,12 +16,16 @@ RUN composer require laravel/vapor-cli --update-with-dependencies
 
 RUN ln -s /vendor/bin/vapor /usr/local/bin/vapor
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+ENV NODE_VERSION 16.18.0
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-RUN source ~/.nvm/nvm.sh
+ENV NVM_DIR=/root/.nvm
 
-RUN nvm install node && nvm install node 12 && nvm install node 14 && nvm install node 16
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm install 14.21.0 && nvm use 14.21.0
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
 
-RUN ln -s /vendor/bin/vapor /usr/local/bin/vapor
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
 ENTRYPOINT []
