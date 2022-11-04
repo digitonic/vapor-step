@@ -22,6 +22,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
 ENV NVM_DIR=/root/.nvm
 
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm install 12.21.0 && nvm use 12.21.0
 RUN . "$NVM_DIR/nvm.sh" && nvm install 14.21.0 && nvm use 14.21.0
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
