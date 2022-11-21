@@ -1,4 +1,6 @@
-FROM digitonic/php8.1:latest
+ARG PHP_VERSION=8.1
+
+FROM digitonic/php${PHP_VERSION}:latest
 
 ARG GITHUB_TOKEN
 
