@@ -25,6 +25,7 @@ steps:
         build_arguments:
           - GITHUB_TOKEN=${{GITHUB_TOKEN}}
           - PHP_VERSION=8.0
+
       build_81:
         title: "Building Step"
         type: "build"
@@ -35,3 +36,14 @@ steps:
         build_arguments:
           - GITHUB_TOKEN=${{GITHUB_TOKEN}}
           - PHP_VERSION=8.1
+
+      build_82:
+        title: "Building Step"
+        type: "build"
+        image_name: digitonic/vapor-step
+        tag: "8.2"
+        stage: "build"
+        registry: 'dockerhub'
+        build_arguments:
+          - GITHUB_TOKEN=${{GITHUB_TOKEN}}
+          - PHP_VERSION=8.2
