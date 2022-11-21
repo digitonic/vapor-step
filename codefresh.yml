@@ -11,23 +11,26 @@ steps:
     revision: "main"
     stage: "clone"
 
-  build_80:
-    title: "Building Step"
-    type: "build"
-    image_name: digitonic/vapor-step
-    tag: "8.0"
-    stage: "build"
-    registry: 'dockerhub'
-    build_arguments:
-      - GITHUB_TOKEN=${{GITHUB_TOKEN}}
-      - PHP_VERSION=8.0
-  build_81:
-    title: "Building Step"
-    type: "build"
-    image_name: digitonic/vapor-step
-    tag: "latest"
-    stage: "build"
-    registry: 'dockerhub'
-    build_arguments:
-      - GITHUB_TOKEN=${{GITHUB_TOKEN}}
-      - PHP_VERSION=8.1
+  build_vapor:
+    type: parallel
+    steps:
+      build_80:
+        title: "Building Step"
+        type: "build"
+        image_name: digitonic/vapor-step
+        tag: "8.0"
+        stage: "build"
+        registry: 'dockerhub'
+        build_arguments:
+          - GITHUB_TOKEN=${{GITHUB_TOKEN}}
+          - PHP_VERSION=8.0
+      build_81:
+        title: "Building Step"
+        type: "build"
+        image_name: digitonic/vapor-step
+        tag: "latest"
+        stage: "build"
+        registry: 'dockerhub'
+        build_arguments:
+          - GITHUB_TOKEN=${{GITHUB_TOKEN}}
+          - PHP_VERSION=8.1
