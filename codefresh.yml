@@ -13,6 +13,7 @@ steps:
 
   build_vapor:
     type: parallel
+    stage: "build"
     steps:
       build_80:
         title: "Building Step"
